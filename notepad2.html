@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>دفترچه یادداشت</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fefefe;
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('your-image-url.jpg'); /* تصویر پس‌زمینه */
+      background-size: cover;
+      background-position: center;
+    }
+    textarea {
+      direction: rtl; /* مهم برای راست‌نویسی */
+      width: 80vw;
+      height: 80vh;
+      border: 2px solid #333;
+      padding: 20px;
+      font-size: 18px;
+      box-sizing: border-box;
+      resize: none;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.85); /* پس‌زمینه نیمه‌شفاف */
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="editor" placeholder="اینجا یادداشت کن..."></textarea>
+
+  <script>
+    const textarea = document.getElementById("editor");
+
+    // بارگذاری متن ذخیره‌شده
+    window.onload = function () {
+      const saved = localStorage.getItem("notepadContent");
+      if (saved !== null) {
+        textarea.value = saved;
+      }
+    };
+
+    // ذخیره خودکار در حافظه مرورگر
+    textarea.addEventListener("input", function () {
+      localStorage.setItem("notepadContent", textarea.value);
+    });
+  </script>
+</body>
+</html>
